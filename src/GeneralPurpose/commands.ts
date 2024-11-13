@@ -5,7 +5,6 @@ import {
   UpdateExpenseRecordTypes,
 } from "./TypeChecking/expense_generic_record.js";
 import ExpenseModel from "./model/expense_model.js";
-import CurrencyEnums from "./enums.js";
 
 const dirPath = decodeURIComponent(
   new URL("data", import.meta.url).pathname.slice(1)
@@ -23,7 +22,6 @@ try {
   expenses = [];
   await fs.writeFile(filePath, JSON.stringify(expenses, null, 2), "utf8");
 }
-
 
 export default class Expenses {
   private static monthNames = [
@@ -51,38 +49,6 @@ export default class Expenses {
     return maxId + 1;
   }
 
-  // TODO: Fix later
-  // static async setCurrency(currency: string) {
-
-  //   const UpperCurrency = currency.toUpperCase();
-
-  //   switch (UpperCurrency) {
-  //     case "NAIRA":
-  //       currentCurrency = CurrencyEnums.NAIRA;
-  //       break;
-  //     case "DOLLAR":
-  //       currentCurrency = CurrencyEnums.DOLLAR;
-  //       break;
-  //     case "KUWAITDINAR":
-  //       currentCurrency = CurrencyEnums.KUWAITDINAR;
-  //       break;
-  //     case "EURO":
-  //       currentCurrency = CurrencyEnums.EURO;
-  //       break;
-  //     case "SHEKEL":
-  //       currentCurrency = CurrencyEnums.SHEKEL;
-  //       break;
-  //     case "YEN":
-  //       currentCurrency = CurrencyEnums.YEN;
-  //       break;
-  //     default:
-  //       currentCurrency = CurrencyEnums.POUND;
-  //       break;
-  //   }
-
-  //   console.log(`Currency set to: ${currentCurrency}`);
-  // }
-
   static async add(CreateExpensesRecordOptions: CreateExpenseRecordTypes) {
     const { description, amount, category } = CreateExpensesRecordOptions;
 
@@ -98,7 +64,7 @@ export default class Expenses {
     expenses.push(addExpenses);
 
     await fs.writeFile(filePath, JSON.stringify(expenses, null, 2), "utf8");
-    console.log(`>> Sucessfully added to expenses to Record`);
+    console.log(`>> Successfully added expense to Record`);
   }
 
   private static async getExpenseById(id: number): Promise<{
