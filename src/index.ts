@@ -10,21 +10,8 @@ program
   .version("0.0.1");
 
 program
-  .command("set")
-  .description("Choose the currency by which you want to store your expenses")
-  .option(
-    "-cc --currency <string>",
-    "This allows you to choose the right currency for your application",
-    ["Naira", "Dollar", "KuwaitDinar", "Yen", "Euro", "Pound", "Shekel"]
-  )
-  .action(async (option) => {
-    const { currency } = option;
-
-    // await Expenses.setCurrency(currency);
-  });
-
-program
   .command("add")
+  .description("This gives you the ability to add an expense.")
   .requiredOption(
     "-d, --description <string>",
     "This takes in the description of the expense"
@@ -52,6 +39,7 @@ program
 
 program
   .command("update")
+  .description("This gives you the ability to update an expense")
   .requiredOption("--id <number>")
   .option("-a --amount <number>")
   .option("-c --category <string>")
