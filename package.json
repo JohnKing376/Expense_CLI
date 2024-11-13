@@ -1,0 +1,24 @@
+{
+  "name": "expensetracker-cli",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "expense-tracker": "./dist/index.js"
+  },
+  "type": "module",
+  "scripts": {
+    "link-cli": "yarn --global unlink expensetracker-cli || true && yarn --global link",
+    "build": "tsc -w"
+  },
+  "private": true,
+  "author": "John King",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.8.2",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "commander": "^12.1.0"
+  }
+}
