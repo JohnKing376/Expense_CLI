@@ -11,6 +11,7 @@ program
 
 program
   .command("add")
+  .description("This gives you the ability to add an expense.")
   .requiredOption(
     "-d, --description <string>",
     "This takes in the description of the expense"
@@ -38,6 +39,7 @@ program
 
 program
   .command("update")
+  .description("This gives you the ability to update an expense")
   .requiredOption("--id <number>")
   .option("-a --amount <number>")
   .option("-c --category <string>")
